@@ -2,14 +2,14 @@
   "name": "odoolens",
   "displayName": "OdooLens",
   "description": "Odoo-aware developer intelligence for VS Code: semantic model index, ORM performance doctor, XML view validation, security analysis, dependency graphs, migration assistant and more.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "AnandShah",
   "author": {
     "name": "Anand Shah"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/AnandShha10/OdooLens"
+    "url": "https://github.com/AnandShah10/OdooLens"
   },
   "license": "MIT",
   "engines": {

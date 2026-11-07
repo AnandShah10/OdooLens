@@ -6,8 +6,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.85.0-007ACC?logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 [![Odoo](https://img.shields.io/badge/Odoo-14%E2%80%9319-714B67?logo=odoo&logoColor=white)](https://www.odoo.com/)
-[![GitHub stars](https://img.shields.io/github/stars/AnandShha10/OdooLens?style=social)](https://github.com/AnandShha10/OdooLens)
-[![GitHub issues](https://img.shields.io/github/issues/AnandShha10/OdooLens)](https://github.com/AnandShha10/OdooLens/issues)
+[![GitHub stars](https://img.shields.io/github/stars/AnandShah10/OdooLens?style=social)](https://github.com/AnandShah10/OdooLens)
+[![GitHub issues](https://img.shields.io/github/issues/AnandShah10/OdooLens)](https://github.com/AnandShah10/OdooLens/issues)
 
 > VS Code finally understands Odoo.
 
@@ -53,7 +53,7 @@ Made with ❤️ by **Anand Shah** for the developer community.
 ### From source
 
 ```bash
-git clone https://github.com/AnandShha10/OdooLens.git
+git clone https://github.com/AnandShah10/OdooLens.git
 cd odoolens
 npm install
 npm run compile

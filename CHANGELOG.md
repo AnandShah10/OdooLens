@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 - Extension Repo Change
+
+Fixed the nam eof the repo of OdooLens.
+
 ## 0.1.0 — Initial foundation
 
 First working build of OdooLens. Establishes the core semantic index and the highest-value
