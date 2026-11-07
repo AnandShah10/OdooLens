@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sale_order_form" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Sales Order">
+                <header>
+                    <button name="action_confirm" type="object" string="Confirm"/>
+                </header>
+                <group>
+                    <field name="partner_id"/>
+                    <field name="order_line"/>
+                    <field name="amount_total"/>
+                </group>
+            </form>
+        </field>
+    </record>
+</odoo>

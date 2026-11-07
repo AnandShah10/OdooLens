@@ -1,0 +1,320 @@
+{
+  "name": "odoolens",
+  "displayName": "OdooLens",
+  "description": "Odoo-aware developer intelligence for VS Code: semantic model index, ORM performance doctor, XML view validation, security analysis, dependency graphs, migration assistant and more.",
+  "version": "0.1.0",
+  "publisher": "AnandShah",
+  "author": {
+    "name": "Anand Shah"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AnandShha10/OdooLens"
+  },
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "odoo",
+    "python",
+    "orm",
+    "xml",
+    "language-server"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/__manifest__.py"
+  ],
+  "main": "./out/src/extension.js",
+  "contributes": {
+    "languages": [],
+    "commands": [
+      {
+        "command": "odooIntelligence.analyzeWorkspace",
+        "title": "Odoo: Analyze Workspace"
+      },
+      {
+        "command": "odooIntelligence.rebuildIndex",
+        "title": "Odoo: Rebuild Index"
+      },
+      {
+        "command": "odooIntelligence.clearIndexCache",
+        "title": "Odoo: Clear Index Cache"
+      },
+      {
+        "command": "odooIntelligence.showModel",
+        "title": "Odoo: Show Model"
+      },
+      {
+        "command": "odooIntelligence.showFieldIntelligence",
+        "title": "Odoo: Show Field Intelligence"
+      },
+      {
+        "command": "odooIntelligence.findFieldUsages",
+        "title": "Odoo: Find Field Usages"
+      },
+      {
+        "command": "odooIntelligence.goToFieldDefinition",
+        "title": "Odoo: Go to Field Definition"
+      },
+      {
+        "command": "odooIntelligence.showDependencyGraph",
+        "title": "Odoo: Show Dependency Graph"
+      },
+      {
+        "command": "odooIntelligence.showViewInheritance",
+        "title": "Odoo: Show View Inheritance"
+      },
+      {
+        "command": "odooIntelligence.analyzeImpact",
+        "title": "Odoo: Analyze Impact"
+      },
+      {
+        "command": "odooIntelligence.generateMigrationReport",
+        "title": "Odoo: Generate Migration Report"
+      },
+      {
+        "command": "odooIntelligence.inspectRuntimeRegistry",
+        "title": "Odoo: Inspect Runtime Registry"
+      },
+      {
+        "command": "odooIntelligence.connectRuntime",
+        "title": "Odoo: Connect to Runtime"
+      },
+      {
+        "command": "odooIntelligence.analyzeLog",
+        "title": "Odoo: Analyze Odoo Log"
+      },
+      {
+        "command": "odooIntelligence.openLocation",
+        "title": "Odoo: Open Source Location"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "odooIntelligence.showFieldIntelligence",
+          "when": "resourceLangId == python || resourceLangId == xml",
+          "group": "odoo"
+        },
+        {
+          "command": "odooIntelligence.analyzeImpact",
+          "when": "resourceLangId == python",
+          "group": "odoo"
+        },
+        {
+          "command": "odooIntelligence.showViewInheritance",
+          "when": "resourceLangId == xml",
+          "group": "odoo"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "odooIntelligence.openLocation",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "OdooLens",
+      "properties": {
+        "odooIntelligence.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable OdooLens."
+        },
+        "odooIntelligence.odooVersion": {
+          "type": "string",
+          "default": "auto",
+          "enum": [
+            "auto",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19"
+          ],
+          "description": "Target Odoo version. 'auto' attempts detection from manifests."
+        },
+        "odooIntelligence.addonsPaths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Additional addons paths (relative to workspace root) to scan for Odoo modules."
+        },
+        "odooIntelligence.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to Python interpreter (reserved for future runtime helper use)."
+        },
+        "odooIntelligence.enableORMDoctor": {
+          "type": "boolean",
+          "default": true
+        },
+        "odooIntelligence.enableSecurityAnalyzer": {
+          "type": "boolean",
+          "default": true
+        },
+        "odooIntelligence.enableDeadCodeAnalyzer": {
+          "type": "boolean",
+          "default": true
+        },
+        "odooIntelligence.enableMigrationAnalyzer": {
+          "type": "boolean",
+          "default": true
+        },
+        "odooIntelligence.enableXMLAnalyzer": {
+          "type": "boolean",
+          "default": true
+        },
+        "odooIntelligence.enableRuntimeRegistry": {
+          "type": "boolean",
+          "default": false
+        },
+        "odooIntelligence.logLevel": {
+          "type": "string",
+          "default": "information",
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ]
+        },
+        "odooIntelligence.ormDoctor.enabled": {
+          "type": "boolean",
+          "default": true
+        },
+        "odooIntelligence.ormDoctor.severity": {
+          "type": "string",
+          "default": "warning",
+          "enum": [
+            "error",
+            "warning",
+            "information",
+            "hint"
+          ]
+        },
+        "odooIntelligence.ormDoctor.rules": {
+          "type": "object",
+          "default": {
+            "search-in-loop": true,
+            "browse-in-loop": true,
+            "create-in-loop": true,
+            "write-in-loop": true,
+            "unlink-in-loop": true,
+            "search-count-misuse": true,
+            "record-by-record-write": true,
+            "repeated-env-access": true
+          },
+          "description": "Enable/disable individual ORM Doctor rules."
+        },
+        "odooIntelligence.security.rules": {
+          "type": "object",
+          "default": {
+            "sudo-bypass": true,
+            "unrestricted-search": true,
+            "public-controller-mutation": true,
+            "csrf-disabled-route": true,
+            "sudo-mutation-without-auth-check": true
+          }
+        },
+        "odooIntelligence.security.aclRules": {
+          "type": "object",
+          "default": {
+            "no-access-rule-defined": true,
+            "dangling-access-rule-model": true,
+            "acl-write-without-read": true,
+            "permissive-record-rule": true
+          },
+          "description": "Enable/disable individual ACL/record-rule analyzer checks."
+        },
+        "odooIntelligence.deadCode.minConfidence": {
+          "type": "string",
+          "default": "probably_unused",
+          "enum": [
+            "definitely_unused",
+            "probably_unused",
+            "unknown"
+          ],
+          "description": "Minimum confidence level to report as a dead-code diagnostic."
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "odooIntelligence",
+          "title": "OdooLens",
+          "icon": "media/odoolens.svg"
+        }
+      ]
+    },
+    "views": {
+      "odooIntelligence": [
+        {
+          "id": "odooIntelligence.modelExplorer",
+          "name": "Models",
+          "icon": "media/view-models.svg",
+          "contextualTitle": "Odoo Models"
+        },
+        {
+          "id": "odooIntelligence.moduleExplorer",
+          "name": "Modules",
+          "icon": "media/view-modules.svg",
+          "contextualTitle": "Odoo Modules"
+        },
+        {
+          "id": "odooIntelligence.problemsExplorer",
+          "name": "Problems",
+          "icon": "media/view-problems.svg",
+          "contextualTitle": "OdooLens Problems"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "mocha",
+    "test:integration": "npm run compile && node ./out/src/test/runTest.js",
+    "lint": "eslint src tests",
+    "test:helper": "python3 -m unittest discover -s odoo-helper/tests"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "@types/xmldom": "^0.1.34",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.5",
+    "glob": "^14.0.4",
+    "mocha": "^12.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "saxes": "^6.0.0",
+    "tree-sitter-wasms": "^0.1.11",
+    "web-tree-sitter": "^0.20.8"
+  },
+  "icon": "media/icon.png",
+  "galleryBanner": {
+    "color": "#714B67",
+    "theme": "dark"
+  }
+}
