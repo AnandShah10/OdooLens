@@ -6,7 +6,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![VS Code](https://img.shields.io/badge/VS%20Code-%5E1.85.0-007ACC?logo=visual-studio-code&logoColor=white)](https://code.visualstudio.com/)
 [![Odoo](https://img.shields.io/badge/Odoo-14%E2%80%9319-714B67?logo=odoo&logoColor=white)](https://www.odoo.com/)
-[![CI](https://img.shields.io/github/actions/workflow/status/AnandShha10/OdooLens/ci.yml?branch=main&label=CI)](https://github.com/AnandShha10/OdooLens/actions)
 [![GitHub stars](https://img.shields.io/github/stars/AnandShha10/OdooLens?style=social)](https://github.com/AnandShha10/OdooLens)
 [![GitHub issues](https://img.shields.io/github/issues/AnandShha10/OdooLens)](https://github.com/AnandShha10/OdooLens/issues)
 
